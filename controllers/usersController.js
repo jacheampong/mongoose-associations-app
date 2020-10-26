@@ -10,6 +10,17 @@ router.get('/new', (req, res) => {
   res.render('users/new.ejs');
 });
 
+//USER INDEX PAGE
+router.get('/', (req, res) => {
+
+  // find all users
+  User.find({}, (error, users) => {
+    console.log(`${users}`)
+    res.render('users/index.ejs', { users });
+  });
+
+});
+
 // CREATE A NEW USER
 router.post('/', (req, res) => {
   User.create(req.body, (error, user) => {
@@ -39,7 +50,7 @@ router.post('/:userId/tweets', (req, res) => {
   });
 });
 
-
+// EDIT TWEET 
 router.get('/:userId/tweets/:tweetId/edit', (req, res) => {
   // set the value of the user and tweet ids
   const userId = req.params.userId;

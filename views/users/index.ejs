@@ -1,0 +1,17 @@
+<h1>Users Index</h1>
+
+<div>
+    <% users.forEach(user => { %>
+        <p>
+            <span>Name: <a href="/users/<%= user._id%>"> <%= user.name %></a></span> <br>
+            <span>Tweets: <%= user.tweets.length %></span>
+        </p>
+        <p>
+            <% user.tweets.forEach(tweet => { %> 
+                Tweet: <%= tweet.tweetText %> <br>
+            <% }) %>
+        </p>
+        
+        <hr>
+    <% }) %>
+</div>
