@@ -1,0 +1,21 @@
+<h1>Album Index</h1>
+
+<div>
+    <% albums.forEach(album => { %>
+        <p>
+            <span>Title: <a href="/albums/<%= album._id%>"> <%= album.title %></a></span> <br>
+            <span>Artist: <%= album.artist %></a></span> <br>
+            <span>Year:  <%= album.releaseYear %></a></span> <br>
+            <span>Tracks: <%= album.songs.length %></span>
+        </p>
+        <p>
+            Songs: <br>
+            <% album.songs.forEach(song => { %> 
+                Title: <%= song.songTitle %> <br>
+                Feature: <%= song.feature %> <br>
+                Duration: <%= song.duration %> <br>
+            <% }) %>
+        </p>
+        <hr>
+    <% }) %>
+</div>
