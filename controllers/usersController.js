@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 // CREATE A NEW USER
 router.post('/', (req, res) => {
   User.create(req.body, (error, user) => {
-    res.redirect('/users/${user.id}')
+    res.redirect(`/users/${user.id}`)
   });
 });
 
@@ -83,6 +83,8 @@ router.put('/:userId/tweets/:tweetId', (req, res) => {
   });
 });
 
+
+// DELETE TWEET
 router.delete('/:userId/tweets/:tweetId', (req, res) => {
   console.log('DELETE TWEET');
   // set the value of the user and tweet ids
@@ -103,5 +105,16 @@ router.delete('/:userId/tweets/:tweetId', (req, res) => {
   });
 });
 
+// DELETE USER
+router.delete('/:userId', (req, res) => {
+  console.log('DELETE USER');
+  // set the value of the user
+  const { userId } = req.params
+
+  // find user in db by id
+  User.findByIdAndRemove(userId, (err) => {
+    res.redirect('/users');
+  });
+});
 
 module.exports = router;

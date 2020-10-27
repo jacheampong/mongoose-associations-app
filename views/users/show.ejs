@@ -7,6 +7,10 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<br>
+<form action="/users/<%= user.id %>?_method=DELETE" method="POST">
+  <button type="submit"  class="btn btn-danger">DELETE</button>
+</form> 
 
 <h1>Tweets</h1>
 
