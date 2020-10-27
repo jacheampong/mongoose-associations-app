@@ -8,13 +8,7 @@
             <span>Year:  <%= album.releaseYear %></a></span> <br>
             <span>Tracks: <%= album.songs.length %></span>
         </p>
-        <p>
-            Songs: <br>
-            <% album.songs.forEach(song => { %> 
-                Title: <%= song.songTitle %> <br>
-                Duration: <%= song.duration %> <br>
-            <% }) %>
-        </p>
+        
         <hr>
     <% }) %>
 </div>
