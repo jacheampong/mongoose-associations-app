@@ -16,7 +16,7 @@
 
 <h1>Songs</h1>
 
-<ul>
+<ol>
   <% album.songs.forEach(song => { %>
   <li>
     <a href="/albums/<%= album.id %>/songs/<%= song.id %>/edit"><%= song.songTitle %></a
@@ -29,4 +29,4 @@
     </form>
   </li>
   <% }) %>
-</ul>
+</ol>

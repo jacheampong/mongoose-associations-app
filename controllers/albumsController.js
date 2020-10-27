@@ -66,4 +66,23 @@ router.get('/:albumId/songs/:songId/edit', (req, res) => {
 });
 
 
+// UPDATE SONG EMBEDDED IN A ALBUM DOCUMENT
+router.put('/:albumId/songs/:songId', (req, res) => {
+console.log('PUT ROUTE');
+// set the value of the ablum and song ids
+const { albumId, songId } = req.params
+
+    // find user in db by id
+    Album.findById(albumId, (err, foundAlbum) => {
+        // find song embedded in album
+        const foundSong = foundAlbum.songs.id(songId);
+        // update song and completed with data from request body
+        foundSong.songTitle = req.body.songTitle
+        foundSong.duration = req.body.duration
+        foundAlbum.save((err, savedAlbum) => {
+            res.redirect(`/albums/${foundAlbum.id}`);
+        });
+    });
+});
+
 module.exports = router;
