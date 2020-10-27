@@ -32,4 +32,22 @@ router.get('/:albumId', (req, res) => {
     });
 });
 
+
+// CREATE SONG EMBEDDED IN ALBUM
+router.post('/:albumId/songs', (req, res) => {
+    console.log(req.body);
+    // store new song in memory with data from request body
+    const newSong = new Song({ 
+        songTitle: req.body.songTitle,
+        duration: req.body.duration
+    });
+    // find album in db by id and add new song
+    Album.findById(req.params.albumId, (error, album) => {
+        album.songs.push(newSong)
+        album.save((err, album) => {
+            res.redirect(`/albums/${album.id}`);
+        });
+    });
+});
+
 module.exports = router;
