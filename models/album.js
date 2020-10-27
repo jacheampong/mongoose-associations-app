@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const songSchema = new mongoose.Schema({
   songTitle: String,
-  duration: Number,
+  duration: String,
 });
 
 const albumSchema = new mongoose.Schema({

@@ -1,0 +1,26 @@
+<h1>Edit <%= album.title %>'s Song</h1>
+<h4>Edit Song</h4>
+<form
+  action="/albums/<%= album.id %>/songs/<%= song.id %>?_method=PUT"
+  method="POST"
+>
+  <div class="form-group">
+    <label for="songTitle">Song Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="songTitle"
+      name="songTitle"
+      value="<%= song.songTitle %>"
+    />
+    <label for="duration">Song Duration</label>
+    <input
+      type="text"
+      class="form-control"
+      id="duration"
+      name="duration"
+      value="<%= song.duration %>"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

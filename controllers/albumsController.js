@@ -50,4 +50,20 @@ router.post('/:albumId/songs', (req, res) => {
     });
 });
 
+
+// EDIT SONG 
+router.get('/:albumId/songs/:songId/edit', (req, res) => {
+    // set the value of the album and song ids
+    const { albumId, songId } = req.params
+
+    // find album in db by id
+    Album.findById(albumId, (err, album) => {
+        // find song embedded in album
+        const song = album.songs.id(songId);
+        // update song and completed with data from request body
+        res.render('songs/edit.ejs', { album, song });
+    });
+});
+
+
 module.exports = router;
