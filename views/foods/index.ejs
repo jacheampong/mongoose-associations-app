@@ -1,0 +1,5 @@
+<h1>Food Index Page</h1>
+
+<% foods.forEach(food => { %>
+    <a href="/foods/<%= food._id%>"> <%= food.name %> </a> <br>
+<% }) %>
